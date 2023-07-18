@@ -1,8 +1,12 @@
-document.getElementById('login-form').addEventListener('submit', function(e) {
+document.getElementById('login-form').addEventListener('submit', function (e) {
 	e.preventDefault();
-	// Perform login logic here
-	// You can use JavaScript to validate inputs, make AJAX requests to authenticate the user, etc.
-	// This script provides a basic template and will need to be enhanced to handle login functionality.
-	alert('Login form submitted.');
-  });
-  
+	const email = document.getElementById('email').value;
+	const password = document.getElementById('password').value;
+
+	//just checks if it's not empty for now
+	if (email.trim() !== '' && password.trim() !== '') {
+		window.location.href = 'profile.html';
+	} else {
+		alert('Invalid email or password. Please try again.');
+	}
+});
