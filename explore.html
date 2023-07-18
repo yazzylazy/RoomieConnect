@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Explore</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<header>
+    <nav>
+      <div class="logo">
+        <h1><a href="index.html"><b>The RoomieConnect</b></a></h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="explore.html">Explore</a></li>
+		<li><a href="review.html">Review</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+<body>
+
+	<div class="container">
+		<h1>Explore</h1>
+		<button id="filterButton">Filter</button>
+
+		<div id="postsContainer"></div>
+
+		<!--faceted search-->
+		<div class="modal" id="filterModal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Filter</h5>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label>Level of Education:</label>
+									<div class="form-check">
+										<input type="checkbox" name="lType" value="PHD" class="form-check-input">
+										<label class="form-check-label">PHD</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" name="lType" value="Masters" class="form-check-input">
+										<label class="form-check-label">Masters</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" name="lType" value="Undergrad" class="form-check-input">
+										<label class="form-check-label">Undergrad</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Price Range:</label>
+									<input type="range" min="0" max="3" step="1" class="form-range" id="priceRange">
+									<label id="priceRangeLabel">$$$</label>
+								</div>
+							</div>
+							<div class="col">
+								<div class="form-group">
+									<label>Gender:</label>
+									<div class="form-check">
+										<input type="checkbox" name="gender" value="Female"
+											class="form-check-input">
+										<label class="form-check-label">Female</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" name="gender" value="Male"
+											class="form-check-input">
+										<label class="form-check-label">Male</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" name="gender" value="Other"
+											class="form-check-input">
+										<label class="form-check-label">Other</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" id="closeFilterModal">Close</button>
+						<button id="applyFiltersButton">Apply Filters</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		const posts = [
+			{
+				id: 1,
+				title: 'Title',
+				description: 'Description.',
+				imageUrl: 'f1.jpg',
+				type: 'PHD',
+				priceRange: 1,
+				g: ['Female'],
+			},
+			{
+				id: 2,
+				title: 'Title',
+				description: 'Description',
+				imageUrl: 'f2.jpg',
+				type: 'Masters',
+				priceRange: 2,
+				g: ['Male'],
+			},
+			{
+				id: 3,
+				title: 'Title',
+				description: 'Description',
+				imageUrl: 'f3.jpg',
+				type: 'Undergrad',
+				priceRange: 3,
+				g: ['Other'],
+			},
+			{
+				id: 4,
+				title: 'Title',
+				description: 'Description',
+				imageUrl: 'f4.jpg',
+				type: 'PHD',
+				priceRange: 2,
+				g: ['Female'],
+			},
+		];
+
+		//create posts
+		function createPosts(filteredPosts) {
+			const postsContainer = document.getElementById('postsContainer');
+			postsContainer.innerHTML = '';
+
+			filteredPosts.forEach((post) => {
+				const postCard = document.createElement('div');
+				postCard.className = 'card custom-card mb-3';
+
+				const image = document.createElement('img');
+				image.className = 'card-img-top';
+				image.src = post.imageUrl;
+
+				const cardBody = document.createElement('div');
+				cardBody.className = 'card-body';
+
+				const title = document.createElement('h5');
+				title.className = 'card-title';
+				title.textContent = post.title;
+
+				const description = document.createElement('p');
+				description.className = 'card-text';
+				description.textContent = post.description;
+
+				const type = document.createElement('p');
+				type.textContent = 'Level of Education: ' + post.type;
+
+				const priceRange = document.createElement('p');
+				priceRange.textContent = 'Price Range: ' + ['Free', '$', '$$', '$$$'][post.priceRange];
+
+				const gender = document.createElement('p');
+				gender.textContent = 'Gender: ' + post.g.join(', ');
+
+				cardBody.appendChild(title);
+				cardBody.appendChild(description);
+				cardBody.appendChild(type);
+				cardBody.appendChild(priceRange);
+				cardBody.appendChild(gender);
+
+				postCard.appendChild(image);
+				postCard.appendChild(cardBody);
+
+				postsContainer.appendChild(postCard);
+			});
+		}
+
+		//filter click
+		function handleFilterClick() {
+			const filterModal = document.getElementById('filterModal');
+			filterModal.style.display = 'block';
+		}
+
+		//filter close
+		function handleFilterClose() {
+			const filterModal = document.getElementById('filterModal');
+			filterModal.style.display = 'none';
+		}
+		document.getElementById('closeFilterModal').addEventListener('click', handleFilterClose);
+
+		//apply filtering
+		function handleFilterApply() {
+			const selectedlTypes = Array.from(document.querySelectorAll('input[name="lType"]:checked')).map((checkbox) => checkbox.value);
+			const selectedGender = Array.from(document.querySelectorAll('input[name="gender"]:checked')).map((checkbox) => checkbox.value);
+			const selectedPriceRange = document.getElementById('priceRange').valueAsNumber;
+
+			const filteredPosts = posts.filter((post) => {
+				const matcheslType = selectedlTypes.length === 0 || selectedlTypes.includes(post.type);
+				const matchesGender = selectedGender.length === 0 || selectedGender.every((restriction) => post.g.includes(restriction));
+				const matchesPriceRange = selectedPriceRange === 0 || post.priceRange <= selectedPriceRange;
+
+				return matcheslType && matchesGender && matchesPriceRange;
+			});
+
+			//format filtered posts
+			createPosts(filteredPosts);
+			handleFilterClose();
+		}
+
+		//event listeners
+		document.getElementById('filterButton').addEventListener('click', handleFilterClick);
+		document.getElementById('applyFiltersButton').addEventListener('click', handleFilterApply);
+
+		//creating all posts that will be displayed until you filter the posts
+		const filteredPosts = posts;
+		createPosts(filteredPosts);
+	</script>
+</body>
+
+</html>
