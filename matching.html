@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roommate Matching Form</title>
+</head>
+<body>
+    <h1>Roommate Matching Form</h1>
+    <form action="submit_roommate_matching.php" method="post">
+        <!-- Personal Information -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age"><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Non-Binary">Non-Binary</option>
+            <option value="Other">Other</option>
+            <option value="Prefer Not to Say">Prefer Not to Say</option>
+        </select><br>
+
+        <label for="pronouns">Preferred Pronouns:</label>
+        <input type="text" id="pronouns" name="pronouns"><br>
+
+        <!-- Education and Study Information -->
+        <label for="level_education">Level of Education:</label>
+        <select id="level_education" name="level_education">
+            <option value="Undergrad">Undergrad</option>
+            <option value="Masters">Masters</option>
+            <option value="PhD">PhD</option>
+            <option value="Semester Off">Semester Off</option>
+            <option value="Work Term">Work Term</option>
+        </select><br>
+
+        <label for="study_environment">Preferred Study Environment:</label>
+        <input type="text" id="study_environment" name="study_environment"><br>
+
+        <label for="study_hours">Study Hours:</label>
+        <input type="text" id="study_hours" name="study_hours"><br>
+
+        <label for="academic_goals">Academic Goals:</label>
+        <textarea id="academic_goals" name="academic_goals"></textarea><br>
+
+        <!-- Living Preferences -->
+        <label for="location_preference">Location Preference:</label>
+        <input type="text" id="location_preference" name="location_preference"><br>
+
+        <label for="cleanliness_preference">Cleanliness Preference:</label>
+        <select id="cleanliness_preference" name="cleanliness_preference">
+            <option value="Neat">Neat</option>
+            <option value="Average">Average</option>
+            <option value="Messy">Messy</option>
+        </select>
+
+        <label for="sleeping_schedule">Sleeping Schedule:</label>
+        <select id="sleeping_schedule" name="sleeping_schedule">
+            <option value="Early Bird">Early Bird</option>
+            <option value="Late Riser">Late Riser</option>
+            <option value="Night Owl">Night Owl</option>
+        </select>
+
+        <label for="noise_tolerance">Noise Tolerance:</label>
+        <select id="noise_tolerance" name="noise_tolerance">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+
+        <label for="living_space">Preferred Living Space:</label>
+        <select id="living_space" name="living_space">
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Dormitory">Dormitory</option>
+        </select>
+        
+        <label for="room_type">Preferred Room Type:</label>
+        <select id="room_type" name="room_type">
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Dormitory">Dormitory</option>
+        </select>
+
+        <label for="lease_duration">Desired Lease Duration:</label>
+        <input type="text" id="lease_duration" name="lease_duration"><br>
+
+        <label for="rent_budget">Rent Budget:</label>
+        <input type="text" id="rent_budget" name="rent_budget"><br>
+
+        <label for="pet_preference">Pet Preference:</label>
+        <select id="pet_preference" name="pet_preference">
+            <option value="No Pets">No Pets</option>
+            <option value="Open to Pets">Open to Pets</option>
+            <option value="I own a Pet">I own a Pet</option>
+        </select>
+
+        <!-- Social Preferences -->
+        <label for="compatibility_preferences">Compatibility Preferences:</label>
+        <input type="text" id="compatibility_preferences" name="compatibility_preferences"><br>
+
+        <label for="hobbies_interests">Hobbies & Interests:</label>
+        <input type="text" id="hobbies_interests" name="hobbies_interests"><br>
+
+        <label for="dietary_preferences">Dietary Preferences and Restrictions:</label>
+        <input type="text" id="dietary_preferences" name="dietary_preferences"><br>
+
+        <label for="smoking_habits">Smoking Habits:</label>
+        <select id="smoking_habits" name="smoking_habits">
+            <option value="Non-Smoker">Non-Smoker</option>
+            <option value="Occasional Smoker">Occasional Smoker</option>
+            <option value="Regular Smoker">Regular Smoker</option>
+        </select>
+
+        <label for="drinking_habits">Drinking Habits:</label>
+        <select id="drinking_habits" name="drinking_habits">
+            <option value="Non-Drinker">Non-Drinker</option>
+            <option value="Social Drinker">Social Drinker</option>
+            <option value="Regular Drinker">Regular Drinker</option>
+        </select>
+
+        <label for="extroversion_level">Extroversion Level:</label>
+        <select id="extroversion_level" name="extroversion_level">
+            <option value="Introvert">Introvert</option>
+            <option value="Ambivert">Ambivert</option>
+            <option value="Extrovert">Extrovert</option>
+        </select>
+
+        <label for="social_activities">Preferred Social Activities:</label>
+        <input type="text" id="social_activities" name="social_activities"><br>
+
+        <label for="social_participation">Social Participation:</label>
+        <select id="social_participation" name="social_participation">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Sometimes">Sometimes</option>
+        </select>
+
+        <label for="deal_breakers">Deal Breakers:</label>
+        <input type="text" id="deal_breakers" name="deal_breakers"><br>
+
+        <label for="additional_info">Additional Information:</label>
+        <input type="text" id="additional_info" name="additional_info"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
