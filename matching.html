@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Roommate Matching Form</h1>
-    <form action="submit_roommate_matching.php" method="post">
+    <form id="matching-form" action="matching.php" method="post">
         <!-- Personal Information -->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
@@ -26,6 +26,7 @@
         <input type="text" id="pronouns" name="pronouns"><br>
 
         <!-- Education and Study Information -->
+
         <label for="level_education">Level of Education:</label>
         <select id="level_education" name="level_education">
             <option value="Undergrad">Undergrad</option>
@@ -53,35 +54,35 @@
             <option value="Neat">Neat</option>
             <option value="Average">Average</option>
             <option value="Messy">Messy</option>
-        </select>
+        </select><br>
 
         <label for="sleeping_schedule">Sleeping Schedule:</label>
         <select id="sleeping_schedule" name="sleeping_schedule">
             <option value="Early Bird">Early Bird</option>
             <option value="Late Riser">Late Riser</option>
             <option value="Night Owl">Night Owl</option>
-        </select>
+        </select><br>
 
         <label for="noise_tolerance">Noise Tolerance:</label>
         <select id="noise_tolerance" name="noise_tolerance">
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
-        </select>
+        </select><br>
 
         <label for="living_space">Preferred Living Space:</label>
         <select id="living_space" name="living_space">
             <option value="Apartment">Apartment</option>
             <option value="House">House</option>
             <option value="Dormitory">Dormitory</option>
-        </select>
+        </select><br>
         
         <label for="room_type">Preferred Room Type:</label>
         <select id="room_type" name="room_type">
             <option value="Apartment">Apartment</option>
             <option value="House">House</option>
             <option value="Dormitory">Dormitory</option>
-        </select>
+        </select><br>
 
         <label for="lease_duration">Desired Lease Duration:</label>
         <input type="text" id="lease_duration" name="lease_duration"><br>
@@ -94,7 +95,7 @@
             <option value="No Pets">No Pets</option>
             <option value="Open to Pets">Open to Pets</option>
             <option value="I own a Pet">I own a Pet</option>
-        </select>
+        </select><br>
 
         <!-- Social Preferences -->
         <label for="compatibility_preferences">Compatibility Preferences:</label>
@@ -111,21 +112,21 @@
             <option value="Non-Smoker">Non-Smoker</option>
             <option value="Occasional Smoker">Occasional Smoker</option>
             <option value="Regular Smoker">Regular Smoker</option>
-        </select>
+        </select><br>
 
         <label for="drinking_habits">Drinking Habits:</label>
         <select id="drinking_habits" name="drinking_habits">
             <option value="Non-Drinker">Non-Drinker</option>
             <option value="Social Drinker">Social Drinker</option>
             <option value="Regular Drinker">Regular Drinker</option>
-        </select>
+        </select><br>
 
         <label for="extroversion_level">Extroversion Level:</label>
         <select id="extroversion_level" name="extroversion_level">
             <option value="Introvert">Introvert</option>
             <option value="Ambivert">Ambivert</option>
             <option value="Extrovert">Extrovert</option>
-        </select>
+        </select><br>
 
         <label for="social_activities">Preferred Social Activities:</label>
         <input type="text" id="social_activities" name="social_activities"><br>
@@ -135,7 +136,10 @@
             <option value="Yes">Yes</option>
             <option value="No">No</option>
             <option value="Sometimes">Sometimes</option>
-        </select>
+        </select><br>
+
+        <label for="communication_style">Preferred Communication Style:</label>
+        <input type="text" id="communication_style" name="communication_style"><br>
 
         <label for="deal_breakers">Deal Breakers:</label>
         <input type="text" id="deal_breakers" name="deal_breakers"><br>
