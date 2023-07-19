@@ -1,42 +1,13 @@
 <?php
-include 'connect.php';
-
-$name;
-$age;
-$gender;
-$pronouns;
-$institution;
-$level_education;
-$study_environment;
-$study_hours;
-$academic_goals;
-$location_preference;
-$cleanliness_preference;
-$sleeping_schedule;
-$noise_tolerance;
-$living_space;
-$room_type;
-$lease_duration;
-$rent_budget;
-$pet_preference;
-$compatibility_preferences;
-$hobbies_interests;
-$dietary_preferences;
-$smoking_habits;
-$drinking_habits;
-$extroversion_level;
-$social_activities;
-$social_participation;
-$deal_breakers;
-$additional_info;
-
-try {
+  include 'connect.php';
+  session_start();
+  $userID = $_SESSION['id'];
+  echo 'Testing 1...';
   // Get Record information
   $name = $_POST['name'];
   $age = $_POST['age'];
   $gender = $_POST['gender'];
   $pronouns = $_POST['pronouns'];
-  $institution = $_POST['institution'];
   $level_education = $_POST['level_education'];
   $study_environment = $_POST['study_environment'];
   $study_hours = $_POST['study_hours'];
@@ -58,24 +29,109 @@ try {
   $extroversion_level = $_POST['extroversion_level'];
   $social_activities = $_POST['social_activities'];
   $social_participation = $_POST['social_participation'];
+  $communication_style = $_POST['communication_style'];
   $deal_breakers = $_POST['deal_breakers'];
   $additional_info = $_POST['additional_info'];
-
-  // Create connection to database
-  $conn = new PDO("mysql:host=localhost;dbname=roomieconnect", $username, $dbpassword);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
+  echo 'Testing 2...';
 
   // SQL query to insert user data
-  $registration = "INSERT INTO roomateMatching (name, institution, email, password) VALUES (?, ?, ?, ?)";
+  $registration = "INSERT INTO roomateMatching (
+    user_id, 
+    name, 
+    age, 
+    gender, 
+    pronouns, 
+    level_education, 
+    study_environment, 
+    study_hours, 
+    academic_goals, 
+    cleanliness_preference, 
+    sleeping_schedule, 
+    noise_tolerance, 
+    extroversion_level, 
+    social_activities, 
+    social_participation, 
+    location_preference, 
+    living_space, 
+    room_type, 
+    lease_duration, 
+    compatibility_preferences, 
+    hobbies_interests, 
+    dietary_preferences, 
+    smoking_habits, 
+    drinking_habits, 
+    pet_preference, 
+    rent_budget, 
+    communication_style, 
+    deal_breakers, 
+    additional_info) VALUES (
+      :user_id, 
+      :name, 
+      :age, 
+      :gender, 
+      :pronouns, 
+      :level_education, 
+      :study_environment, 
+      :study_hours, 
+      :academic_goals, 
+      :cleanliness_preference, 
+      :sleeping_schedule, 
+      :noise_tolerance, 
+      :extroversion_level, 
+      :social_activities, 
+      :social_participation, 
+      :location_preference, 
+      :living_space, 
+      :room_type, 
+      :lease_duration, 
+      :compatibility_preferences, 
+      :hobbies_interests, 
+      :dietary_preferences, 
+      :smoking_habits, 
+      :drinking_habits, 
+      :pet_preference, 
+      :rent_budget, 
+      :communication_style, 
+      :deal_breakers, 
+      :additional_info";
+
+  echo 'Testing 3...';
   $stmt = $conn->prepare($registration);
-  $stmt->execute([$name, $institution, $email, $password]);
 
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
-}
+  echo 'Testing 4...';
+  $stmt->execute(array(
+    ":user_id" => $userID, 
+    ":name" => $name, 
+    ":age" => $age, 
+    ":gender" => $gender, 
+    ":pronouns" => $pronouns, 
+    ":level_education" => $level_education, 
+    ":study_environment" => $study_environment, 
+    ":study_hours" => $study_hours, 
+    ":academic_goals" => $academic_goals, 
+    ":cleanliness_preference" => $cleanliness_preference, 
+    ":sleeping_schedule" => $sleeping_schedule, 
+    ":noise_tolerance" => $noise_tolerance, 
+    ":extroversion_level" => $extroversion_level, 
+    ":social_activities" => $social_activities, 
+    ":social_participation" => $social_participation, 
+    ":location_preference" => $location_preference,
+    ":living_space" => $living_space, 
+    ":room_type" => $room_type, 
+    ":lease_duration" => $lease_duration, 
+    ":compatibility_preferences" => $compatibility_preferences, 
+    ":hobbies_interests" => $hobbies_interests, 
+    ":dietary_preferences" => $dietary_preferences, 
+    ":smoking_habits" => $smoking_habits, 
+    ":drinking_habits" => $drinking_habits, 
+    ":pet_preference" => $pet_preference, 
+    ":rent_budget" => $rent_budget, 
+    ":communication_style" => $communication_style, 
+    ":deal_breakers" => $deal_breakers, 
+    ":additional_info" => $additional_info)
+  ) or die(print_r($stmt->errorInfo(), true));
 
-$conn->close();
+  echo 'Testing 5...';
+  
 
 ?>
