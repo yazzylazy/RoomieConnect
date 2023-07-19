@@ -1,75 +1,44 @@
 <?php
-  session_start();
-  $id = $_SESSION['userID'];
-  $name = $_SESSION['name'];
-  $institution = $_SESSION['institution'];
-  $email = $_SESSION['email'];
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate and sanitize the form data (you can add more validation as needed)
+    $name = htmlspecialchars($_POST["name"]);
+    $age = intval($_POST["age"]);
+    $gender = $_POST["gender"];
+    $pronouns = htmlspecialchars($_POST["pronouns"]);
+    $level_education = $_POST["level_education"];
+    $study_environment = htmlspecialchars($_POST["study_environment"]);
+    $study_hours = htmlspecialchars($_POST["study_hours"]);
+    $academic_goals = htmlspecialchars($_POST["academic_goals"]);
+    // (Continue adding more variables for other form fields)
+
+    // Database connection details
+    $servername = "your_database_servername";
+    $username = "your_database_username";
+    $password = "your_database_password";
+    $dbname = "your_database_name";
+
+    // Create a database connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare the SQL query to insert data into the roommateMatching table
+    $sql = "INSERT INTO roommateMatching 
+            (name, age, gender, pronouns, level_education, study_environment, study_hours, academic_goals, ...)
+            VALUES 
+            ('$name', $age, '$gender', '$pronouns', '$level_education', '$study_environment', '$study_hours', '$academic_goals', ...)";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Form data submitted successfully!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close the database connection
+    $conn->close();
+}
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>RoomieConnect - Profile</title>
-  <link rel="stylesheet" href="profile.css">
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<header>
-    <nav>
-      <div class="logo">
-        <h1><a href="index.html">The RoomieConnect</a></h1>
-      </div>
-      <ul class="nav-links">
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="explore.html">Explore</a></li>
-        <li><a href="review.html">Review</a></li>
-        <li><a href="index.html">Logout</a></li>
-      </ul>
-    </nav>
-  </header>
-
-<body>
-  <div class="profile">
-    <h2>Welcome, <?=$name?>!</h2>
-    <p><strong>Email:</strong> <?=$email?></p>
-    <p><strong>University:</strong> <?=$institution?></p>
-
-    <div class="tab-container">
-      <div class="tab" onclick="showTab('personalInfo')">Personal Information</div>
-      <div class="tab" onclick="showTab('matches')">Matches</div>
-    </div>
-
-    <div class="tab-content personalInfo active">
-      <p><strong>Date of Birth:</strong> [Date of Birth]</p>
-      <p><strong>Gender:</strong> [Gender]</p>
-    </div>
-
-    <div class="tab-content matches">
-      <div class="matches">
-        <div class="match">
-          <h3>Match 1</h3>
-          <p><strong>Name:</strong> [Name]</p>
-          <p><strong>Compatibility:</strong> [Compatibility Score]</p>
-          <p><strong>Interests:</strong> [Interests]</p>
-          <button class="online-button" onclick="startChat('chat.html')">Chat now</button>
-          <button class="match-now-button" onclick="showConfirmationDialog('Match 1 Name')">Match</button>
-        </div>
-
-        <div class="match">
-          <h3>Match 2</h3>
-          <p><strong>Name:</strong> [Name]</p>
-          <p><strong>Compatibility:</strong> [Score]</p>
-          <p><strong>Interests:</strong> [Interests]</p>
-          <button class="offline-button" disabled>Chat now</button>
-          <button class="match-now-button" onclick="showConfirmationDialog('Match 2 Name')">Match</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script src="profile.js"></script>
-</body>
-</html>
-
-
