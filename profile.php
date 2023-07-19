@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  $id = $_SESSION['userID'];
+  $name = $_SESSION['name'];
+  $institution = $_SESSION['institution'];
+  $email = $_SESSION['email'];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +30,9 @@
 
 <body>
   <div class="profile">
-    <h2>Welcome, [Name]!</h2>
-    <p><strong>Email:</strong> [Email]</p>
-    <p><strong>University:</strong> [University]</p>
+    <h2>Welcome, <?=$name?>!</h2>
+    <p><strong>Email:</strong> <?=$email?></p>
+    <p><strong>University:</strong> <?=$institution?></p>
 
     <div class="tab-container">
       <div class="tab" onclick="showTab('personalInfo')">Personal Information</div>
