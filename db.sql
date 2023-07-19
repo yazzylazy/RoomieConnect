@@ -14,8 +14,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE roommateMatching (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT REFERENCES users(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
     name VARCHAR(255) NOT NULL,
     age INT,
     gender ENUM('Male', 'Female', 'Non-Binary', 'Other', 'Prefer Not to Say'),
@@ -41,7 +40,6 @@ CREATE TABLE roommateMatching (
     drinking_habits ENUM('Non-Drinker', 'Social Drinker', 'Regular Drinker'),
     pet_preferences ENUM('No Pets', 'Open to Pets', 'I own a Pet'),
     rent_budget DECIMAL(10, 2),
-    communication_style VARCHAR(255),
     deal_breakers VARCHAR(255),
     additional_info TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
