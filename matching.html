@@ -2,10 +2,24 @@
 <html>
 <head>
     <title>Roommate Matching Form</title>
+    <link rel="stylesheet" href="matching.css">
 </head>
+<header>
+    <nav>
+      <div class="logo">
+        <h1><a href="index.html"><b>The RoomieConnect</b></a></h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="explore.html">Explore</a></li>
+		<li><a href="review.html">Review</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
 <body>
     <h1>Roommate Matching Form</h1>
-    <form id="matching-form" action="matching.php" method="post">
+    <form id="matching-form" action="matching.php" method="post" class="login-form">
         <!-- Personal Information -->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
