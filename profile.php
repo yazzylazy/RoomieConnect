@@ -20,7 +20,7 @@
         <h1><a href="index.html">The RoomieConnect</a></h1>
       </div>
       <ul class="nav-links">
-        <li><a href="profile.html">Profile</a></li>
+        <li><a href="profile.php">Profile</a></li>
         <li><a href="explore.html">Explore</a></li>
         <li><a href="review.html">Review</a></li>
         <li><a href="index.html">Logout</a></li>
@@ -40,8 +40,7 @@
     </div>
 
     <div class="tab-content personalInfo active">
-      <p><strong>Date of Birth:</strong> [Date of Birth]</p>
-      <p><strong>Gender:</strong> [Gender]</p>
+      <button id="matchingButton" onclick="location.href='matching.html'">Fill Out Matching Profile</button>
     </div>
 
     <div class="tab-content matches">

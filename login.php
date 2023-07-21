@@ -15,7 +15,7 @@
     
     $count = $stmt->rowCount();
     if($count > 0) {
-        echo $user[2];
+        echo $user[0];
         $_SESSION['userID'] = $user[0];
         $_SESSION['name'] = $user[1];
         $_SESSION['institution'] = $user[2];
@@ -26,6 +26,7 @@
     } else {
         $message = '<label>Incorrect Login</label>';
         echo 'Login Failed';
+        //header("location: ./login.html");
     }
 
 ?>

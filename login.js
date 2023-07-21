@@ -5,7 +5,7 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
 
 	//just checks if it's not empty for now
 	if (email.trim() !== '' && password.trim() !== '') {
-		window.location.href = 'profile.html';
+		window.location.href = 'profile.php';
 	} else {
 		alert('Invalid email or password. Please try again.');
 	}
