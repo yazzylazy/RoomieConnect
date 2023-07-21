@@ -1,8 +1,7 @@
 <?php
   include 'connect.php';
   session_start();
-  $userID = $_SESSION['id'];
-  echo 'Testing 1...';
+  $userID = $_SESSION['userID'];
   // Get Record information
   try {
     $name = $_POST['name'];
@@ -33,7 +32,6 @@
     $communication_style = $_POST['communication_style'];
     $deal_breakers = $_POST['deal_breakers'];
     $additional_info = $_POST['additional_info'];
-    echo 'Testing 2...';
 
     // SQL query to insert user data
     $registration = "INSERT INTO roommateMatching (
@@ -98,10 +96,8 @@
         :additional_info
       )";
 
-    echo 'Testing 3...';
     $stmt = $conn->prepare($registration);
 
-    echo 'Testing 4...';
     $stmt->execute(array(
       ":user_id" => $userID, 
       ":name" => $name, 
@@ -135,7 +131,6 @@
     ) or die(print_r($stmt->errorInfo(), true));
     
     header("location: ./profile.php");
-    echo 'Testing 5...';
     } catch(Exception $e) {
       echo "Exception -> ";
       var_dump($e->getMessage());
