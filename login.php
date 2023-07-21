@@ -4,6 +4,9 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    if($email == 'admin@roomieconnect.com' & $password == 'admin') {
+        header("location: ./admin.html");
+    }
     $query = "SELECT * FROM users WHERE email = :email AND password = :password";
     $stmt = $conn->prepare($query);
     $stmt->execute(array(':email' => $email, ':password' => $password));
