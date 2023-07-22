@@ -20,7 +20,7 @@ function showTab(tabName) {
     const confirmMessage = `Are you sure you want to match with ${matchName}?`;
   
     if (confirm(confirmMessage)) {
-      window.location.href = 'confirm.html';
+      window.location.href = 'profile.php';
     }
   }
   
